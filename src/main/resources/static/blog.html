@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="css/jet.css">
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav class="ui inverted attached segment jet-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Jet-Blog</h2>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="home icon"></i>首頁</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="idea icon"></i>分類</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="tags icon"></i>標籤</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="clone icon"></i>歸檔</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="info icon"></i>關於我</a>
+            <div class="right j-item item jet-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search..."/>
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle icon black button jet-right-top jet-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!-- 內容 -->
+<div class="jet-container-small jet-padded-tb-big">
+    <div class="ui container">
+        <div class="ui top attached segment">
+            <div class="ui mini horizontal link list">
+                <div class="item">
+                    <img src="https://unsplash.it/100/100?image=1005" alt=""
+                         class="ui avatar image">
+                    <div class="content">
+                        <a href="#" class="header">Mark</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="calendar icon"></i> 2021-08-14
+                </div>
+                <div class="item">
+                    <i class="eye icon"></i> 1231
+                </div>
+            </div>
+        </div>
+        <div class="ui attached segment">
+            <!-- Picture -->
+            <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image">
+        </div>
+        <div class="ui attached padded segment">
+            <!-- Content -->
+            <div class="ui right aligned basic segment">
+                <div class="ui orange basic label">原創</div>
+            </div>
+
+            <h2 class="ui center aligned header">
+                徐巧芯提發現金3大理由：我家以前開早餐店「振興券無助小店家」
+            </h2>
+            <br>
+
+            <div id="content" class="jet-padded-lr-responsive jet-padded-tb-large">
+                近日行政院提出「振興五倍劵」的規劃，預計9月推出，重施去年三倍券的模式，五倍券改為讓民眾用1000元換5000元；
+                台北市議員徐巧芯今（13）日表示，她家以前開早餐店，
+                還算了解小店家的營運模式，她提出發現金比發消費券、五倍券都好的3大理由，
+                並質疑發券能幫助到真的需要幫忙的小店家嗎？是要發大賣場振興券嗎？
+
+                她在臉書發文表示，為什麼發「現金」比發「消費券」好，又比要先拿1000出來「參與」的五倍券好？
+                她說，家裡以前是開早餐店的，她還算蠻了解小店家的營運模式。疫情期間不能內用，只能改外帶，
+                小店家苦不堪言，此波他們應該也是主要的振興目標。因此提出3個要點關於「為什麼發現金，比發消費券或振興券好」。
+
+                第一點她表示，應該考量小店家的現金週轉問題。
+                因為經過這幾個月的煎熬，小店家的現金週轉早已快撐不下去了。
+                每天的食材成本、房租、水電都是要用現金支付，而疫情期間生意受到影響，許多店家快拿不出來了。
+                她表示，現在要振興，讓消費者積極消費，但等到的券要拿去兌換成現金，難以收到後就使用，例如繳交水電費等，這樣仍然增加他們週轉負擔。
+            </div>
+
+            <!-- Tag -->
+            <div class="jet-padded-lr-responsive">
+                <div class="ui basic teal left pointing label">
+                    新聞
+                </div>
+            </div>
+
+            <!-- Donate -->
+            <div class="ui center aligned basic segment">
+                <button id="payButton" class="ui basic orange circular button">斗內</button>
+            </div>
+            <div class="ui payQr flowing popup transition hidden">
+                <div class="ui orange basic label">
+                    <div class="ui images" style="font-size: inherit">
+                        <div class="image">
+                            <img src="images/QRcode.jpg" alt="" class="ui rounded bordered image" style="width: 120px">
+                            <div>綠界</div>
+                        </div>
+                        <div class="image">
+                            <img src="images/QRcode.jpg" alt="" class="ui rounded bordered image" style="width: 120px">
+                            <div>LINE Pay</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui attached positive message">
+            <!-- Bolg msg -->
+            <div class="ui middle aligned grid">
+                <div class="eleven wide column">
+                    <ui class="list">
+                        <li>作者：MARK</li>
+                        <li>發表時間：2021-08-14</li>
+                        <li>版權聲明：自由轉載-非商業用-保持屬名許可</li>
+                    </ui>
+                </div>
+                <div class="five wide column">
+                    <img src="images/QRcode.jpg" alt="" class="ui rounded bordered image" style="width: 120px;">
+                </div>
+            </div>
+        </div>
+        <div class="ui bottom attached segment">
+            <!-- Message board -->
+            <div class="ui teal segment">
+                <div class="ui comments">
+                    <h3 class="ui dividing header">Comments</h3>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://unsplash.it/100/100?image=1003">
+                        </a>
+                        <div class="content">
+                            <a class="author">Matt</a>
+                            <div class="metadata">
+                                <span class="date">Today at 5:42PM</span>
+                            </div>
+                            <div class="text">
+                                How artistic!
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回覆</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://unsplash.it/100/100?image=1006">
+                        </a>
+                        <div class="content">
+                            <a class="author">Elliot Fu</a>
+                            <div class="metadata">
+                                <span class="date">Yesterday at 12:30AM</span>
+                            </div>
+                            <div class="text">
+                                <p>This has been very useful for my research. Thanks as well!</p>
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回覆</a>
+                            </div>
+                        </div>
+                        <div class="comments">
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Jenny Hess</a>
+                                    <div class="metadata">
+                                        <span class="date">Just now</span>
+                                    </div>
+                                    <div class="text">
+                                        Elliot you are always so right :)
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回覆</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://unsplash.it/100/100?image=1003">
+                        </a>
+                        <div class="content">
+                            <a class="author">Joe Henderson</a>
+                            <div class="metadata">
+                                <span class="date">5 days ago</span>
+                            </div>
+                            <div class="text">
+                                Dude, this is awesome. Thanks so much
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回覆</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="field">
+                    <textarea name="content" id="messageBoard" placeholder="有什麼要留言的嗎？"></textarea>
+                </div>
+                <div class="fields">
+                    <div class="field jet-mobile-wide jet-margin-bottom-small">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="nickname" placeholder="姓名">
+                        </div>
+                    </div>
+                    <div class="field jet-mobile-wide jet-margin-bottom-small">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="text" name="email" placeholder="信箱">
+                        </div>
+                    </div>
+                    <div class="field jet-margin-bottom-small jet-mobile-wide">
+                        <button class="ui jet-mobile-wide teal button"><i class="edit icon"></i>送出</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<!-- 底部 -->
+<footer class="ui inverted vertical segment jet-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="images/QRcode.jpg" class="ui rounded image" alt="QR Code" style="width: 100px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">最新文章</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Store</a>
+                    <a href="#" class="item">Hibernate</a>
+                    <a href="#" class="item">Spring Boot</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">聯絡我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email: Cheng106.andy@gmail.com</a>
+                    <a href="#" class="item">Hibernate</a>
+                    <a href="#" class="item">Spring Boot</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">Blog</h4>
+                <p class="jet-text-thin jet-text-spaced jet-opacity-mini">這是我的部落格～參考其他網站測試的部落格</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="jet-text-thin jet-text-spaced jet-opacity-tiny">Copyright © 2021 JetBlog Designed by Cheng</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+    $('#payButton').popup({
+        popup: $('.payQr.popup'),
+        on: 'click',
+        position: 'bottom center'
+    })
+</script>
+</body>
+</html>
