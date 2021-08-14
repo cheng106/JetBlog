@@ -87,6 +87,13 @@
     margin-top: 2em !important;
 }
 
+/* position */
+.jet-right-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /* display */
 .jet-inline-block {
     display: inline-block !important;
@@ -101,4 +108,18 @@
 /* color */
 .jet-black {
     color: #333 !important;
+}
+
+.jet-mobile-show {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    .jet-mobile-hide {
+        display: none !important;
+    }
+
+    .jet-mobile-show {
+        display: block !important;
+    }
 }
