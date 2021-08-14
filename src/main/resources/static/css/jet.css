@@ -129,6 +129,12 @@ body {
     margin: auto !important;
 }
 
+/* ==================== Shadow ==================== */
+.jet-shadow-small {
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
 /* ==================== Color ==================== */
 .jet-black {
     color: #333 !important;
@@ -148,6 +154,11 @@ body {
     }
 
     .jet-padded-lr-responsive {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .jet-mobile-lr-clear {
         padding-right: 0 !important;
         padding-left: 0 !important;
     }
