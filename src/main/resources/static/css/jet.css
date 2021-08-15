@@ -106,6 +106,27 @@ body {
     margin-bottom: 0.5em !important;
 }
 
+.jet-margin-bottom {
+    margin-bottom: 1em !important;
+}
+
+.jet-margin-bottom-large {
+    margin-bottom: 2em !important;
+}
+
+.jet-margin-bottom-big {
+    margin-bottom: 3em !important;
+}
+
+.jet-margin-bottom-huge {
+    margin-bottom: 4em !important;
+}
+
+.jet-margin-bottom-massive {
+    margin-bottom: 5em !important;
+}
+
+
 /* ==================== Position ==================== */
 .jet-right-top {
     position: absolute;
