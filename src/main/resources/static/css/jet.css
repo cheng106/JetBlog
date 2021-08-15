@@ -11,6 +11,10 @@ body {
     padding: 0.3em !important;
 }
 
+.jet-padded {
+    padding: 1em !important;
+}
+
 .jet-padded-tb-mini {
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
@@ -126,12 +130,21 @@ body {
     margin-bottom: 5em !important;
 }
 
-
 /* ==================== Position ==================== */
 .jet-right-top {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.jet-fixed {
+    position: fixed !important;
+    z-index: 10 !important;
+}
+
+.jet-right-bottom {
+    bottom: 0 !important;
+    right: 0 !important;
 }
 
 /* ==================== Display ==================== */
@@ -155,6 +168,7 @@ body {
     -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
 }
+
 
 /* ==================== Color ==================== */
 .jet-black {
