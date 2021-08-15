@@ -37,7 +37,7 @@
 </nav>
 
 <!-- 內容 -->
-<div class="jet-container-small jet-padded-tb-big animated fadeIn">
+<div id="waypoint" class="jet-container-small jet-padded-tb-big animated fadeIn">
     <div class="ui container">
         <div class="ui top attached segment">
             <div class="ui mini horizontal link list">
@@ -367,7 +367,7 @@ h5,h6{font-size:1em;}
     </div>
 </div>
 
-<div class="jet-padded jet-fixed jet-right-bottom">
+<div id="toolbar" class="jet-padded jet-fixed jet-right-bottom" style="display: none">
     <div class="ui vertical icon buttons">
         <button type="button" class="ui toc teal button">目錄</button>
         <a href="#comment-container" class="ui teal button">留言</a>
@@ -430,6 +430,7 @@ h5,h6{font-size:1em;}
 <script src="lib/prism/prism.js"></script>
 <script src="lib/tocbot/tocbot.min.js"></script>
 <script src="lib/qrcode/qrcode.min.js"></script>
+<script src="lib/waypoints/jquery.waypoints.min.js"></script>
 <script>
     $('.menu.toggle').click(function () {
         $('.j-item').toggleClass('jet-mobile-hide');
@@ -475,6 +476,18 @@ h5,h6{font-size:1em;}
 
     $('#toTop-button').click(function () {
         $(window).scrollTo(0, 500);
+    })
+
+    let waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function (direction) {
+            if (direction === 'down') {
+                $('#toolbar').show(200);
+            } else {
+                $('#toolbar').hide(500);
+            }
+            console.log('Scrolled to waypoint!', direction)
+        }
     })
 </script>
 </body>
