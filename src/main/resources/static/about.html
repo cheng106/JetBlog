@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="css/jet.css">
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Jet-Blog</h2>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="home icon"></i>首頁</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="idea icon"></i>分類</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="tags icon"></i>標籤</a>
+            <a href="#" class="j-item item jet-mobile-hide"><i class="clone icon"></i>歸檔</a>
+            <a href="#" class="active j-item item jet-mobile-hide"><i class="info icon"></i>關於我</a>
+            <div class="right j-item item jet-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search..."/>
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle icon black button jet-right-top jet-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!-- 內容 -->
+<div class="jet-container jet-padded-tb-big">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="eleven wide column">
+                <div class="segment">
+                    <img src="https://unsplash.it/800/600?image=1005" alt="" class="ui rounded image">
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">關於我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="jet-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap
+                        Why do we use it?
+                    </p>
+                    <p class="jet-text">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        specimen book. It has survived not only five centuries, but also the leap
+                        Why do we use it?
+                    </p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui tag label orange jet-margin-tb-tiny">程式語言</div>
+                    <div class="ui orange basic left pointing label jet-margin-tb-tiny">日記</div>
+                    <div class="ui orange basic left pointing label jet-margin-tb-tiny">探討</div>
+                    <div class="ui orange basic left pointing label jet-margin-tb-tiny">測試</div>
+                    <div class="ui orange basic left pointing label jet-margin-tb-tiny">測試</div>
+                    <div class="ui orange basic left pointing label jet-margin-tb-tiny">測試</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic left pointing label jet-margin-tb-tiny">Java</div>
+                    <div class="ui teal basic left pointing label jet-margin-tb-tiny">JavaScript</div>
+                    <div class="ui teal basic left pointing label jet-margin-tb-tiny">Redis</div>
+                    <div class="ui teal basic left pointing label jet-margin-tb-tiny">MySQL</div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="#" class="ui github circular button icon" data-content="xxxxx"
+                       data-position="bottom center">
+                        <i class="github icon"></i>
+                    </a>
+                    <a href="#" class="ui line_chat circular button icon">
+                        <i class="linechat icon"></i>
+                    </a>
+                </div>
+
+                <div class="ui lineQR flowing popup transition hidden">
+                    <img src="images/QRcode.jpg" alt="" class="ui rounded image" style="width: 120px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<!-- 底部 -->
+<footer class="ui inverted vertical segment jet-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="images/QRcode.jpg" class="ui rounded image" alt="QR Code" style="width: 100px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">最新文章</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Store</a>
+                    <a href="#" class="item">Hibernate</a>
+                    <a href="#" class="item">Spring Boot</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">聯絡我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email: Cheng106.andy@gmail.com</a>
+                    <a href="#" class="item">Hibernate</a>
+                    <a href="#" class="item">Spring Boot</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header jet-text-thin jet-text-spaced">Blog</h4>
+                <p class="jet-text-thin jet-text-spaced jet-opacity-mini">這是我的部落格～參考其他網站測試的部落格</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="jet-text-thin jet-text-spaced jet-opacity-tiny">Copyright © 2021 JetBlog Designed by Cheng</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+    $('.github').popup();
+
+    $('.line_chat').popup({
+        popup: $('.lineQR'),
+        on: 'hover',
+        position: 'bottom center'
+    });
+
+</script>
+</body>
+</html>
