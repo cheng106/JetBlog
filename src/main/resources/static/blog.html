@@ -6,6 +6,8 @@
     <title>Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="css/typo.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="lib/prism/prism.css">
     <link rel="stylesheet" href="css/jet.css">
 </head>
 <body>
@@ -34,7 +36,7 @@
 </nav>
 
 <!-- 內容 -->
-<div class="jet-container-small jet-padded-tb-big">
+<div class="jet-container-small jet-padded-tb-big animated fadeIn">
     <div class="ui container">
         <div class="ui top attached segment">
             <div class="ui mini horizontal link list">
@@ -66,7 +68,6 @@
             <h2 class="ui center aligned header">
                 徐巧芯提發現金3大理由：我家以前開早餐店「振興券無助小店家」
             </h2>
-            <br>
 
             <div id="content" class="typo typo-selection jet-padded-lr-responsive jet-padded-tb-large">
                 近日行政院提出「振興五倍劵」的規劃，預計9月推出，重施去年三倍券的模式，五倍券改為讓民眾用1000元換5000元；
@@ -77,7 +78,7 @@
                 她在臉書發文表示，為什麼發「現金」比發「消費券」好，又比要先拿1000出來「參與」的五倍券好？
                 她說，家裡以前是開早餐店的，她還算蠻了解小店家的營運模式。疫情期間不能內用，只能改外帶，
                 小店家苦不堪言，此波他們應該也是主要的振興目標。因此提出3個要點關於「為什麼發現金，比發消費券或振興券好」。
-
+                <pre><code class="language-css">p { color: red}</code></pre>
                 第一點她表示，應該考量小店家的現金週轉問題。
                 因為經過這幾個月的煎熬，小店家的現金週轉早已快撐不下去了。
                 每天的食材成本、房租、水電都是要用現金支付，而疫情期間生意受到影響，許多店家快拿不出來了。
@@ -271,7 +272,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-
+<script src="lib/prism/prism.js"></script>
 <script>
     $('.menu.toggle').click(function () {
         $('.j-item').toggleClass('jet-mobile-hide');
