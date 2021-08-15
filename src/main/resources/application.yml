@@ -3,3 +3,5 @@ spring:
     mode: HTML
   profiles:
     active: dev
+logging:
+  config: classpath:logback-spring.xml

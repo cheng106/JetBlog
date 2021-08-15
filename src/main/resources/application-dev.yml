@@ -20,9 +20,3 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
-logging:
-  level:
-    root: info
-    com.cheng: debug
-  file:
-    name: log/jet-blog-dev.log
