@@ -12,12 +12,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class IndexController {
 
     @GetMapping("/")
-    public String index(@PathVariable Integer id, @PathVariable String name) {
+    public String index() {
         System.out.println("--------index--------");
 //        String blog = null;
 //        if (blog == null) {
 //            throw new NotFoundException("Blog not found !!!");
 //        }
         return "index";
+    }
+
+    @GetMapping("/blog")
+    public String blog() {
+        System.out.println("--------blog--------");
+//        String blog = null;
+//        if (blog == null) {
+//            throw new NotFoundException("Blog not found !!!");
+//        }
+        return "blog";
     }
 }
