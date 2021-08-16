@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <title>500</title>
 </head>
 <body>
-<h1>500</h1>
+<!-- 導航列 -->
+<nav th:replace="_fragments :: menu(0)"></nav>
+
+<br><br><br><br>
+<div class="jet-container-small jet-padded-tb-massive">
+    <div class="ui error message jet-padded-tb-huge">
+        <div class="ui container">
+            <h2>500</h2>
+            <p>對不起，系統出了問題，請返回上一頁</p>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
 </body>
 </html>
