@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <title>Admin Index</title>
+</head>
+
+<body>
+<!-- 導航列 -->
+<nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
+
+<div class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" class="item">發佈</a>
+            <a href="#" class="active item teal">列表</a>
+        </div>
+    </div>
+</div>
+
+<!-- 內容 -->
+<div class="jet-container-small jet-padded-tb-big">
+    <div class="ui container">
+        <div class="ui message success large">
+            <h2>Hi,</h2>
+            <p>歡迎登入</p>
+        </div>
+
+        <img src="https://unsplash.it/1000/600?image=1005" alt="" class="ui rounded bordered fluid image">
+    </div>
+</div>
+
+<br>
+<br>
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    })
+</script>
+</body>
+</html>
