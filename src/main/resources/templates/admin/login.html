@@ -28,7 +28,10 @@
                         </div>
                         <button class="ui fluid large teal submit button">Login</button>
                     </div>
-                    <div class="ui error message"></div>
+                    <div class="ui mini error message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">
+                        帳號或密碼錯誤
+                    </div>
                 </form>
             </div>
         </div>
@@ -36,6 +39,25 @@
 </div>
 
 <!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
-
+<script>
+    $('.ui.form').form({
+        fields: {
+            username: {
+                identifier: 'username',
+                rules: [{
+                    type: 'empty',
+                    prompt: '錯誤：請輸入帳號'
+                }]
+            },
+            password: {
+                identifier: 'password',
+                rules: [{
+                    type: 'empty',
+                    prompt: '錯誤：請輸入密碼'
+                }]
+            }
+        }
+    })
+</script>
 </body>
 </html>
