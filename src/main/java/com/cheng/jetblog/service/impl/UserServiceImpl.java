@@ -3,6 +3,7 @@ package com.cheng.jetblog.service.impl;
 import com.cheng.jetblog.dao.UserRepository;
 import com.cheng.jetblog.po.User;
 import com.cheng.jetblog.service.UserService;
+import com.cheng.jetblog.utils.EncryptStr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username, password);
+        return userRepository.findByUsernameAndPassword(username, EncryptStr.encryptShortSHE256(password));
     }
 }
