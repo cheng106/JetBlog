@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <title>Admin category</title>
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
+
+<div class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" class="item">發佈</a>
+            <a href="#" class="active item teal">列表</a>
+        </div>
+    </div>
+</div>
+
+<!-- 內容 -->
+<div class="jet-container-small jet-padded-tb-big">
+    <div class="ui container">
+
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>標題</th>
+                <th>類型</th>
+                <th>推薦</th>
+                <th>更新時間</th>
+                <th>執行</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>練習清單</td>
+                <td>探討</td>
+                <td>推</td>
+                <td>2021-08-15 13:28</td>
+                <td>
+                    <a href="#" class="ui mini teal basic button">編輯</a>
+                    <a href="#" class="ui mini red basic button">刪除</a>
+                </td>
+            </tr>
+            </tbody>
+
+            <tfoot>
+            <tr>
+                <th colspan="6">
+                    <div class="ui mini pagination menu">
+                        <a href="#" class="item">上一頁</a>
+                        <a href="#" class="item">下一頁</a>
+                        <!--                        <a class="icon item">-->
+                        <!--                            <i class="left chevron icon"></i>-->
+                        <!--                        </a>-->
+                        <!--                        <a href="#" class="item">1</a>-->
+                        <!--                        <a href="#" class="item">2</a>-->
+                        <!--                        <a href="#" class="item">3</a>-->
+                        <!--                        <a href="#" class="item">4</a>-->
+                        <!--                        <a href="#" class="icon item">-->
+                        <!--                            <i class="right chevron icon"></i>-->
+                        <!--                        </a>-->
+                    </div>
+                    <a href="#" class="ui teal right floated mini basic button">新增</a>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
+<br>
+<br>
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    })
+</script>
+</body>
+</html>
