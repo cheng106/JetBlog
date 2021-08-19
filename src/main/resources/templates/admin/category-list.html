@@ -6,7 +6,7 @@
 <body>
 
 <!-- 導航列 -->
-<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
+<nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
 
 <div class="ui attached pointing menu">
     <div class="ui container">
@@ -26,23 +26,17 @@
             <tr>
                 <th></th>
                 <th>標題</th>
-                <th>類型</th>
-                <th>推薦</th>
-                <th>更新時間</th>
-                <th>執行</th>
+                <th>動作</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>練習清單</td>
-                <td>探討</td>
-                <td>推</td>
-                <td>2021-08-15 13:28</td>
+            <tr th:each="category,iterStat : ${page.content}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${category.name}">練習清單</td>
                 <td>
-                    <a href="#" class="ui mini teal basic button">編輯</a>
-                    <a href="#" class="ui mini red basic button">刪除</a>
+                    <a th:href="@{/admin/category/{id}/input(id=${category.id})}" class="ui mini teal basic button">編輯</a>
+                    <a th:href="@{/admin/category/{id}/delete(id=${category.id})}" class="ui mini red basic button">刪除</a>
                 </td>
             </tr>
             </tbody>
@@ -50,9 +44,11 @@
             <tfoot>
             <tr>
                 <th colspan="6">
-                    <div class="ui mini pagination menu">
-                        <a href="#" class="item">上一頁</a>
-                        <a href="#" class="item">下一頁</a>
+                    <div class="ui mini pagination menu"  th:if="${page.totalPages}>1">
+                        <a th:href="@{/admin/categoryList/(page=${page.number}-1)}" class="item"
+                        th:unless="${page.first}">上一頁</a>
+                        <a th:href="@{/admin/categoryList/(page=${page.number}+1)}" class="item"
+                        th:unless="${page.last}">下一頁</a>
                         <!--                        <a class="icon item">-->
                         <!--                            <i class="left chevron icon"></i>-->
                         <!--                        </a>-->
@@ -64,7 +60,7 @@
                         <!--                            <i class="right chevron icon"></i>-->
                         <!--                        </a>-->
                     </div>
-                    <a href="#" class="ui teal right floated mini basic button">新增</a>
+                    <a th:href="@{/admin/category/input}" class="ui teal right floated mini basic button">新增</a>
                 </th>
             </tr>
             </tfoot>

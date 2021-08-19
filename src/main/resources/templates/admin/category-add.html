@@ -21,7 +21,7 @@
 <div class="jet-container-small jet-padded-tb-big">
     <div class="ui container">
         <!-- 標題 -->
-        <form action="#" method="post" class="ui form">
+        <form  th:action="@{/admin/categoryPost}" method="post" class="ui form">
             <div class="field">
                 <div class="ui left labeled input">
                     <label class="ui teal basic label">名稱</label>
@@ -31,7 +31,7 @@
 
             <div class="ui right aligned container">
                 <button type="button" class="ui button" onclick="window.history.back()">返回</button>
-                <button class="ui secondary button">送出</button>
+                <button class="ui secondary submit button">送出</button>
             </div>
         </form>
     </div>
