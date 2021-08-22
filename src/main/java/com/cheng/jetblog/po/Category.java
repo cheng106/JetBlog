@@ -3,6 +3,7 @@ package com.cheng.jetblog.po;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Category {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "請輸入分類名稱")
     private String name;
 
     @OneToMany(mappedBy = "category")

@@ -1,7 +1,6 @@
 package com.cheng.jetblog.service.impl;
 
 import com.cheng.jetblog.dao.CategoryRepository;
-import com.cheng.jetblog.exception.NotFoundException;
 import com.cheng.jetblog.po.Category;
 import com.cheng.jetblog.service.CategoryService;
 import org.springframework.beans.BeanUtils;
@@ -31,6 +30,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategory(Long id) {
         return categoryRepository.getOne(id);
+    }
+
+    @Transactional
+    @Override
+    public Category getCategoryByName(String name) {
+        return categoryRepository.findByName(name);
     }
 
     @Transactional

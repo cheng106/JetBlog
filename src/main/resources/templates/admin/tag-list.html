@@ -6,13 +6,13 @@
 <body>
 
 <!-- 導航列 -->
-<nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
+<nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
 
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a th:href="@{/admin/category/input}" class="item">新增</a>
-            <a th:href="@{/admin/categoryList}" class="active item teal">列表</a>
+            <a th:href="@{/admin/tag/input}" class="item">新增</a>
+            <a th:href="@{/admin/tags}" class="active item teal">列表</a>
         </div>
     </div>
 </div>
@@ -35,12 +35,12 @@
             </thead>
 
             <tbody>
-            <tr th:each="category,iterStat : ${page.content}">
+            <tr th:each="tag,iterStat : ${page.content}">
                 <td th:text="${iterStat.count}">1</td>
-                <td th:text="${category.name}">練習清單</td>
+                <td th:text="${tag.name}">練習清單</td>
                 <td>
-                    <a th:href="@{/admin/category/{id}/input(id=${category.id})}" class="ui mini teal basic button">編輯</a>
-                    <a th:href="@{/admin/category/{id}/delete(id=${category.id})}" class="ui mini red basic button">刪除</a>
+                    <a th:href="@{/admin/tag/{id}/input(id=${tag.id})}" class="ui mini teal basic button">編輯</a>
+                    <a th:href="@{/admin/tag/{id}/delete(id=${tag.id})}" class="ui mini red basic button">刪除</a>
                 </td>
             </tr>
             </tbody>
@@ -49,22 +49,12 @@
             <tr>
                 <th colspan="6">
                     <div class="ui mini pagination menu"  th:if="${page.totalPages}>1">
-                        <a th:href="@{/admin/categoryList/(page=${page.number}-1)}" class="item"
+                        <a th:href="@{/admin/tags/(page=${page.number}-1)}" class="item"
                         th:unless="${page.first}">上一頁</a>
-                        <a th:href="@{/admin/categoryList/(page=${page.number}+1)}" class="item"
+                        <a th:href="@{/admin/tags/(page=${page.number}+1)}" class="item"
                         th:unless="${page.last}">下一頁</a>
-                        <!--                        <a class="icon item">-->
-                        <!--                            <i class="left chevron icon"></i>-->
-                        <!--                        </a>-->
-                        <!--                        <a href="#" class="item">1</a>-->
-                        <!--                        <a href="#" class="item">2</a>-->
-                        <!--                        <a href="#" class="item">3</a>-->
-                        <!--                        <a href="#" class="item">4</a>-->
-                        <!--                        <a href="#" class="icon item">-->
-                        <!--                            <i class="right chevron icon"></i>-->
-                        <!--                        </a>-->
                     </div>
-                    <a th:href="@{/admin/category/input}" class="ui teal right floated mini basic button">新增</a>
+                    <a th:href="@{/admin/tag/input}" class="ui teal right floated mini basic button">新增</a>
                 </th>
             </tr>
             </tfoot>

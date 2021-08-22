@@ -6,13 +6,13 @@
 <body>
 
 <!-- 導航列 -->
-<nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
+<nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment jet-padded-tb-mini jet-shadow-small"></nav>
 
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a th:href="@{/admin/category/input}" class="active item">新增</a>
-            <a th:href="@{/admin/categoryList}" class="item teal">列表</a>
+            <a th:href="@{/admin/tag/input}" class="active item">新增</a>
+            <a th:href="@{/admin/tags}" class="item teal">列表</a>
         </div>
     </div>
 </div>
@@ -21,8 +21,8 @@
 <div class="jet-container-small jet-padded-tb-big">
     <div class="ui container">
         <!-- 標題 -->
-        <form method="post" th:object="${category}"
-              th:action="*{id}==null ? @{/admin/categoryPost} : @{/admin/category/{id}(id=*{id})} " class="ui form">
+        <form method="post" th:object="${tag}"
+              th:action="*{id}==null ? @{/admin/tag} : @{/admin/category/{id}(id=*{id})} " class="ui form">
             <input type="hidden" name="id" th:value="*{id}">
             <div class="required field">
                 <div class="ui left labeled input">
@@ -70,7 +70,7 @@
                 identifier: 'name',
                 rules: [{
                     type: 'empty',
-                    prompt: '請輸入分類名稱哦'
+                    prompt: '請輸入標籤名稱哦'
                 }]
             }
         }
