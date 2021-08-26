@@ -34,7 +34,8 @@
                         <div class="default text">分類</div>
                         <div class="menu">
                             <div th:each="category : ${categoryList}" class="item" data-value="1"
-                            th:data-value="${category.id}" th:text="${category.name}">測試</div>
+                                 th:data-value="${category.id}" th:text="${category.name}">測試
+                            </div>
                             <!--/*-->
                             <div class="item" data-value="2">Log</div>
                             <!--*/-->
@@ -96,6 +97,13 @@
                 </tr>
                 </tfoot>
             </table>
+
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">操作成功</p>
+            </div>
+
         </div>
     </div>
 </div>
@@ -113,6 +121,11 @@
 
     $('.ui.dropdown').dropdown({
         on: 'hover'
+    })
+
+    // 訊息提示關閉初始化
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
     })
 
     function page(obj) {

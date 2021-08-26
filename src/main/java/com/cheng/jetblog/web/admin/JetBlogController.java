@@ -1,6 +1,7 @@
 package com.cheng.jetblog.web.admin;
 
 import com.cheng.jetblog.po.Blog;
+import com.cheng.jetblog.po.User;
 import com.cheng.jetblog.service.BlogService;
 import com.cheng.jetblog.service.CategoryService;
 import com.cheng.jetblog.service.TagService;
@@ -14,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author cheng
@@ -25,6 +29,7 @@ public class JetBlogController {
 
     private static final String Blog_Add = "admin/blog-add";
     private static final String Blog_List = "admin/blogs";
+    private static final String Redirect_List = "redirect:/admin/blogs";
 
     @Autowired
     private BlogService blogService;
@@ -54,5 +59,21 @@ public class JetBlogController {
         model.addAttribute("tags", tagService.findAll());
         model.addAttribute("blog", new Blog());
         return Blog_Add;
+    }
+
+    @PostMapping("/blogs")
+    public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
+        blog.setUser((User) session.getAttribute("user"));
+        blog.setCategory(categoryService.getCategory(blog.getCategory().getId()));
+        blog.setTags(tagService.findAllByIds(blog.getTagIds()));
+
+        Blog b = blogService.saveBlog(blog);
+        if (b == null) {
+            attributes.addFlashAttribute("message", "操作失敗");
+        } else {
+            attributes.addFlashAttribute("message", "操作成功");
+        }
+
+        return Redirect_List;
     }
 }

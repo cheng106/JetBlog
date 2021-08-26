@@ -21,6 +21,8 @@ public interface TagService {
 
     List<Tag> findAll();
 
+    List<Tag> findAllByIds(String ids);
+
     Tag updateTag(Long id, Tag tag);
 
     void deleteTag(Long id);

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author cheng
@@ -44,6 +46,13 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<Tag> findAll() {
         return tagRepository.findAll();
+    }
+
+    @Override
+    public List<Tag> findAllByIds(String ids) {
+        List<Long> idList = Stream.of(ids.split(","))
+                .map(Long::parseLong).collect(Collectors.toList());
+        return tagRepository.findAllById(idList);
     }
 
     @Override
