@@ -3,6 +3,7 @@ package com.cheng.jetblog.web.admin;
 import com.cheng.jetblog.po.Blog;
 import com.cheng.jetblog.service.BlogService;
 import com.cheng.jetblog.service.CategoryService;
+import com.cheng.jetblog.service.TagService;
 import com.cheng.jetblog.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -22,17 +23,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class JetBlogController {
 
+    private static final String Blog_Add = "admin/blog-add";
+    private static final String Blog_List = "admin/blogs";
+
     @Autowired
     private BlogService blogService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private TagService tagService;
 
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 5, sort = {"updateTime"}, direction = Sort.Direction.DESC)
                                 Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("categoryList", categoryService.getAll());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
-        return "admin/blogs";
+        return Blog_List;
     }
 
     @PostMapping("/blogs/search")
@@ -40,5 +46,13 @@ public class JetBlogController {
                                  Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return "admin/blogs :: blogList";
+    }
+
+    @GetMapping("/blogs/add")
+    public String blogAdd(Model model) {
+        model.addAttribute("categoryList", categoryService.getAll());
+        model.addAttribute("tags", tagService.findAll());
+        model.addAttribute("blog", new Blog());
+        return Blog_Add;
     }
 }

@@ -91,7 +91,7 @@
                             <a onclick="page(this)" th:attr="data-page=${page.number}+1)" class="item"
                                th:unless="${page.last}">下一頁</a>
                         </div>
-                        <a href="#" class="ui teal right floated mini basic button">新增</a>
+                        <a th:href="@{/admin/blogs/add}" class="ui teal right floated mini basic button">新增</a>
                     </th>
                 </tr>
                 </tfoot>
@@ -103,8 +103,8 @@
 <br>
 
 <!-- 底部 -->
-<footer th:replace="_fragments :: footer"></footer>
-<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
+<footer th:replace="admin/_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="admin/_fragments :: script"></th:block>/*/-->
 
 <script>
     $('.menu.toggle').click(function () {

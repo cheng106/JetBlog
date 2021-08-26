@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:replace="${title}">Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editorMd/css/editormd.css" th:href="@{/lib/editorMd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/jet.css" th:href="@{/css/jet.css}">
 </head>
 <body>
@@ -78,6 +79,7 @@
 <th:block th:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="../../static/lib/editorMd/editormd.min.js" th:src="@{/lib/editorMd/editormd.min.js}"></script>
 </th:block>
 </body>
 </html>
