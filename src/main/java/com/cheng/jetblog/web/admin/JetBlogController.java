@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -55,17 +56,36 @@ public class JetBlogController {
 
     @GetMapping("/blogs/add")
     public String blogAdd(Model model) {
+        setTypeAndTag(model);
+        model.addAttribute("blog", new Blog());
+        return Blog_Add;
+    }
+
+    private void setTypeAndTag(Model model) {
         model.addAttribute("categoryList", categoryService.getAll());
         model.addAttribute("tags", tagService.findAll());
-        model.addAttribute("blog", new Blog());
+    }
+
+    @GetMapping("/blogs/{id}/edit")
+    public String blogEdit(@PathVariable Long id, Model model) {
+        setTypeAndTag(model);
+        Blog blog = blogService.getBlog(id);
+        System.out.println("###blog = " + blog);
+        blog.init();
+        model.addAttribute("blog", blog);
         return Blog_Add;
     }
 
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
+
         blog.setUser((User) session.getAttribute("user"));
         blog.setCategory(categoryService.getCategory(blog.getCategory().getId()));
         blog.setTags(tagService.findAllByIds(blog.getTagIds()));
+        System.out.println("blog = " + blog);
+        Blog ob = blogService.getBlog(blog.getId());
+        blog.setCreateTime(ob.getCreateTime());
+        blog.setViews(ob.getViews());
 
         Blog b = blogService.saveBlog(blog);
         if (b == null) {
@@ -74,6 +94,13 @@ public class JetBlogController {
             attributes.addFlashAttribute("message", "操作成功");
         }
 
+        return Redirect_List;
+    }
+
+    @GetMapping("/blogs/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes attributes) {
+        blogService.deleteBlog(id);
+        attributes.addFlashAttribute("message", "刪除成功");
         return Redirect_List;
     }
 }

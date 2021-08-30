@@ -1,17 +1,19 @@
 package com.cheng.jetblog.po;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author cheng
  * @since 2021/8/17 21:29
  **/
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "t_blog")
 public class Blog {
@@ -21,7 +23,7 @@ public class Blog {
     private Long id;
     private String title;
 
-//    @Basic(fetch = FetchType.LAZY)
+    //    @Basic(fetch = FetchType.LAZY)
 //    @Lob
     private String content;
     private String firstPicture;
@@ -58,5 +60,41 @@ public class Blog {
 
     public void setRecommend(boolean recommend) {
         isRecommend = recommend;
+    }
+
+    public boolean isPublished() {
+        return isPublished;
+    }
+
+    public void setPublished(boolean published) {
+        isPublished = published;
+    }
+
+    public void init() {
+        tagIds = tagsToIds(getTags());
+    }
+
+    private String tagsToIds(List<Tag> tags) {
+        return tags.stream().map(e -> String.valueOf(e.getId()))
+                .collect(Collectors.joining(","));
+    }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", firstPicture='" + firstPicture + '\'' +
+                ", flag='" + flag + '\'' +
+                ", views=" + views +
+                ", isAppreciation=" + isAppreciation +
+                ", isShareStatements=" + isShareStatements +
+                ", isCommentBoard=" + isCommentBoard +
+                ", isPublished=" + isPublished +
+                ", isRecommend=" + isRecommend +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

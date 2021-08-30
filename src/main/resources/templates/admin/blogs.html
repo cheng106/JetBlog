@@ -12,8 +12,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">發佈</a>
-            <a href="#" class="active item teal">列表</a>
+            <a th:href="@{/admin/blogs/add}" class="item">發佈</a>
+            <a th:href="@{/admin/blogs}" class="active item teal">列表</a>
         </div>
     </div>
 </div>
@@ -79,10 +79,10 @@
                     <td th:text="${blog.title}">練習清單</td>
                     <td th:text="${blog.category.name}">探討</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">推</td>
-                    <td th:text="${blog.published} ? '草稿' : '發佈'">草稿</td>
+                    <td th:text="${blog.published} ? '發佈' : '草稿'">草稿</td>
                     <td th:text="${blog.updateTime}">2021-08-15 13:28</td>
                     <td>
-                        <a th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">編輯</a>
+                        <a th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}" class="ui mini teal basic button">編輯</a>
                         <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">刪除</a>
                     </td>
                 </tr>
@@ -144,8 +144,6 @@
 
     $('#search-btn').click(function () {
         $("[name='page']").val(0);
-        let a = $("[name='recommend']").prop('checked')
-        console.log(a)
         loadData();
     })
 

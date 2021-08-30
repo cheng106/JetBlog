@@ -1,6 +1,9 @@
 package com.cheng.jetblog.po;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +14,8 @@ import java.util.List;
  * @author cheng
  * @since 2021/8/17 21:39
  **/
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "t_tag")
 public class Tag {

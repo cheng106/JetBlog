@@ -1,6 +1,6 @@
 package com.cheng.jetblog.po;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +11,8 @@ import java.util.List;
  * @author cheng
  * @since 2021/8/17 21:38
  **/
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "t_category")
 public class Category {

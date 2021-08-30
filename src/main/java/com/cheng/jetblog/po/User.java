@@ -1,6 +1,9 @@
 package com.cheng.jetblog.po;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +14,8 @@ import java.util.List;
  * @author cheng
  * @since 2021/8/17 21:45
  **/
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "t_user")
 public class User {
