@@ -27,20 +27,23 @@
                 <div class="inline field">
                     <input type="text" name="title" placeholder="標題">
                 </div>
-                <div class="inline field">
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="categoryId">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">分類</div>
-                        <div class="menu">
-                            <div th:each="category : ${categoryList}" class="item" data-value="1"
-                                 th:data-value="${category.id}" th:text="${category.name}">測試
+                <div class="field">
+                    <div class="ui labeled action input">
+                        <div class="ui type selection dropdown">
+                            <input type="hidden" name="categoryId">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">分類</div>
+                            <div class="menu">
+                                <div th:each="category : ${categoryList}" class="item" data-value="1"
+                                     th:data-value="${category.id}" th:text="${category.name}">測試
+                                </div>
+                                <!--/*-->
+                                <div class="item" data-value="2">Log</div>
+                                <!--*/-->
                             </div>
-                            <!--/*-->
-                            <div class="item" data-value="2">Log</div>
-                            <!--*/-->
                         </div>
                     </div>
+                    <button class="ui clear button compact">clear</button>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
@@ -64,6 +67,7 @@
                     <th>標題</th>
                     <th>類型</th>
                     <th>推薦</th>
+                    <th>狀態</th>
                     <th>更新時間</th>
                     <th>執行</th>
                 </tr>
@@ -75,6 +79,7 @@
                     <td th:text="${blog.title}">練習清單</td>
                     <td th:text="${blog.category.name}">探討</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">推</td>
+                    <td th:text="${blog.published} ? '草稿' : '發佈'">草稿</td>
                     <td th:text="${blog.updateTime}">2021-08-15 13:28</td>
                     <td>
                         <a th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">編輯</a>
@@ -85,11 +90,11 @@
 
                 <tfoot>
                 <tr>
-                    <th colspan="6">
+                    <th colspan="7">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" th:attr="data-page=${page.number}-1)" class="item"
+                            <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item"
                                th:unless="${page.first}">上一頁</a>
-                            <a onclick="page(this)" th:attr="data-page=${page.number}+1)" class="item"
+                            <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item"
                                th:unless="${page.last}">下一頁</a>
                         </div>
                         <a th:href="@{/admin/blogs/add}" class="ui teal right floated mini basic button">新增</a>
@@ -128,12 +133,19 @@
         $(this).closest('.message').transition('fade');
     })
 
+    $('.clear.button').on('click', function () {
+        $('.ui.type.dropdown').dropdown('clear')
+    })
+
     function page(obj) {
         $("[name='page']").val($(obj).data('page'));
         loadData();
     }
 
     $('#search-btn').click(function () {
+        $("[name='page']").val(0);
+        let a = $("[name='recommend']").prop('checked')
+        console.log(a)
         loadData();
     })
 

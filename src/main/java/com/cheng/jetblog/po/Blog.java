@@ -21,8 +21,8 @@ public class Blog {
     private Long id;
     private String title;
 
-    @Basic(fetch = FetchType.LAZY)
-    @Lob
+//    @Basic(fetch = FetchType.LAZY)
+//    @Lob
     private String content;
     private String firstPicture;
     private String flag;
@@ -51,4 +51,12 @@ public class Blog {
 
     @Transient
     private String tagIds;
+
+    public boolean isRecommend() {
+        return isRecommend;
+    }
+
+    public void setRecommend(boolean recommend) {
+        isRecommend = recommend;
+    }
 }
