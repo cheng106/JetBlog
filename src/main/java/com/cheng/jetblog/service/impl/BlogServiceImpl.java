@@ -5,12 +5,11 @@ import com.cheng.jetblog.exception.NotFoundException;
 import com.cheng.jetblog.po.Blog;
 import com.cheng.jetblog.po.Category;
 import com.cheng.jetblog.service.BlogService;
+import com.cheng.jetblog.utils.JetBeanUtils;
 import com.cheng.jetblog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +61,18 @@ public class BlogServiceImpl implements BlogService {
         }, pageable);
     }
 
+    @Override
+    public Page<Blog> listBlog(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Blog> ListRecommendBlogTop(Integer size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "updateTime");
+        Pageable pageable = PageRequest.of(0, size, sort);
+        return blogRepository.findTop(pageable);
+    }
+
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
@@ -83,8 +94,8 @@ public class BlogServiceImpl implements BlogService {
         if (b == null) {
             throw new NotFoundException("該文章不存在");
         }
-        BeanUtils.copyProperties(b, blog);
-
+        BeanUtils.copyProperties(b, blog, JetBeanUtils.getNullPropertyNames(blog));
+        b.setUpdateTime(new Date());
         return blogRepository.save(b);
     }
 

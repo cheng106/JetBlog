@@ -21,6 +21,8 @@ public interface TagService {
 
     List<Tag> findAll();
 
+    List<Tag> listTagTop(Integer size);
+
     List<Tag> findAllByIds(String ids);
 
     Tag updateTag(Long id, Tag tag);
