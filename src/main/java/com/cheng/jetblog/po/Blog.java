@@ -54,6 +54,8 @@ public class Blog {
     @Transient
     private String tagIds;
 
+    private String description;
+
     public boolean isRecommend() {
         return isRecommend;
     }
@@ -95,6 +97,12 @@ public class Blog {
                 ", isRecommend=" + isRecommend +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", category=" + category +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
+                ", tagIds='" + tagIds + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

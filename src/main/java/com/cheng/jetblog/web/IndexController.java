@@ -33,7 +33,7 @@ public class IndexController {
         model.addAttribute("page", blogService.listBlog(pageable));
         model.addAttribute("categoryList", categoryService.listCategoryTop(6));
         model.addAttribute("tags", tagService.listTagTop(10));
-        model.addAttribute("recommend", blogService.ListRecommendBlogTop(8));
+        model.addAttribute("recommendBlogList", blogService.ListRecommendBlogTop(8));
         return "index";
     }
 

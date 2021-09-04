@@ -98,6 +98,10 @@
                 </div>
             </div>
 
+            <div class="required field">
+                <textarea name="description" th:text="*{description}" placeholder="Blog description..." maxlength="200"></textarea>
+            </div>
+
             <!-- 勾選 -->
             <div class="inline fields">
                 <div class="field">
@@ -224,6 +228,13 @@
                 rules: [{
                     type: 'empty',
                     prompt: '標題：請輸入文章圖片'
+                }]
+            },
+            description: {
+                identifier: 'description',
+                rules: [{
+                    type: 'empty',
+                    prompt: '標題：請輸入文章描述'
                 }]
             },
         }
