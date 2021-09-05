@@ -25,10 +25,12 @@
             <a href="#" class="j-item item jet-mobile-hide" th:classappend="${index == 4} ? 'active'"><i class="clone icon"></i>歸檔</a>
             <a href="#" class="j-item item jet-mobile-hide" th:classappend="${index == 5} ? 'active'"><i class="info icon"></i>關於我</a>
             <div class="right j-item item jet-mobile-hide">
-                <div class="ui icon inverted transparent input">
-                    <input type="text" placeholder="Search..."/>
-                    <i class="search link icon"></i>
-                </div>
+                <form method="post" name="search" th:action="@{/search}" target="_blank">
+                    <div class="ui icon inverted transparent input">
+                        <input name="query" type="text" placeholder="Search..." th:value="${query}"/>
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
