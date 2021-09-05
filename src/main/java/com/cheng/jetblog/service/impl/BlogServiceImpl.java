@@ -6,6 +6,7 @@ import com.cheng.jetblog.po.Blog;
 import com.cheng.jetblog.po.Category;
 import com.cheng.jetblog.service.BlogService;
 import com.cheng.jetblog.utils.JetBeanUtils;
+import com.cheng.jetblog.utils.MarkdownUtils;
 import com.cheng.jetblog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,19 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.findOne
                 ((root, query, cb) -> cb.equal(root.get("id"), id))
                 .orElse(new Blog());
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = getBlog(id);
+        if (blog == null) {
+            throw new NotFoundException("該文章不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog, b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        return b;
     }
 
     @Override

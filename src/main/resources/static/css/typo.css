@@ -44,6 +44,11 @@
     text-align: justify;
 }
 
+.typo li {
+    font-weight: 300;
+    padding: 4px 0;
+}
+
 /* 要注意表單元素並不繼承父級 font 的問題 */
 /*body, */ /* 會影響到semantic UI套件*/
 .typo button, .typo input, .typo select, .typo textarea {

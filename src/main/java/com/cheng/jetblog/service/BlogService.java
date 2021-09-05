@@ -12,7 +12,10 @@ import java.util.List;
  * @since 2021/8/23 22:11
  **/
 public interface BlogService {
+
     Blog getBlog(Long id);
+
+    Blog getAndConvert(Long id);
 
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
 
