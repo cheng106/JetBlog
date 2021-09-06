@@ -258,24 +258,28 @@ h5,h6{font-size:1em;}
                 <div th:fragment="commentList">
                     <div class="ui threaded comments" style="max-width: 100%;">
                         <h3 class="ui dividing header">留言</h3>
-                        <div class="comment">
+                        <div class="comment" th:each="comment : ${comments}">
                             <a class="avatar">
-                                <img src="https://unsplash.it/100/100?image=1003">
+                                <img src="https://unsplash.it/100/100?image=1003" th:src="@{${comment.avatar}}">
                             </a>
                             <div class="content">
-                                <a class="author">Matt</a>
+                                <a class="author" th:text="${comment.nickname}">Matt</a>
                                 <div class="metadata">
-                                    <span class="date">Today at 5:42PM</span>
+                                    <span class="date"
+                                          th:text="${#dates.format(comment.createTime,'yyyy-MM-dd')}">Today at 5:42PM</span>
                                 </div>
-                                <div class="text">
+                                <div class="text" th:text="${comment.content}">
                                     How artistic!
                                 </div>
                                 <div class="actions">
                                     <a class="reply" data-comment_id="1"
-                                       data-comment_nickname="Mark" onclick="reply(this)">回覆</a>
+                                       data-comment_nickname="Mark"
+                                       th:attr="data-comment_id=${comment.id}, data-comment_nickname=${comment.nickname}"
+                                       onclick="reply(this)">回覆</a>
                                 </div>
                             </div>
                         </div>
+                        <!--/*-->
                         <div class="comment">
                             <a class="avatar">
                                 <img src="https://unsplash.it/100/100?image=1006">
@@ -329,7 +333,7 @@ h5,h6{font-size:1em;}
                                 </div>
                             </div>
                         </div>
-
+                        <!--*/-->
                     </div>
                 </div>
 
@@ -480,6 +484,7 @@ h5,h6{font-size:1em;}
         let bool = $('.ui.form').form('validate form');
         if (bool) {
             console.log('驗證 success')
+            postData();
         } else {
             console.log('驗證失敗')
         }

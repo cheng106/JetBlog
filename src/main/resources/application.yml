@@ -5,3 +5,5 @@ spring:
     active: dev
 logging:
   config: classpath:logback-spring.xml
+
+comment.avatar: /images/avatar.png
