@@ -479,6 +479,12 @@ h5,h6{font-size:1em;}
             }
         }
     })
+    
+    $(function () {
+        $('#comment-container').load(
+            /*[[@{/comments/{id}(id=${blog.id})}]]*/""
+        )
+    })
 
     $('#commentPost-btn').click(function () {
         let bool = $('.ui.form').form('validate form');
