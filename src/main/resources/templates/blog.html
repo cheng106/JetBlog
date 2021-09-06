@@ -232,7 +232,7 @@ h5,h6{font-size:1em;}
             </div>
 
         </div>
-        <div id="comment-container" class="ui attached positive message">
+        <div class="ui attached positive message">
             <!-- Bolg msg -->
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
@@ -254,83 +254,89 @@ h5,h6{font-size:1em;}
         </div>
         <div class="ui bottom attached segment">
             <!-- Message board -->
-            <div class="ui teal segment">
-                <div class="ui comments">
-                    <h3 class="ui dividing header">Comments</h3>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="https://unsplash.it/100/100?image=1003">
-                        </a>
-                        <div class="content">
-                            <a class="author">Matt</a>
-                            <div class="metadata">
-                                <span class="date">Today at 5:42PM</span>
-                            </div>
-                            <div class="text">
-                                How artistic!
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回覆</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="https://unsplash.it/100/100?image=1006">
-                        </a>
-                        <div class="content">
-                            <a class="author">Elliot Fu</a>
-                            <div class="metadata">
-                                <span class="date">Yesterday at 12:30AM</span>
-                            </div>
-                            <div class="text">
-                                <p>This has been very useful for my research. Thanks as well!</p>
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回覆</a>
+            <div id="comment-container" class="ui teal segment">
+                <div th:fragment="commentList">
+                    <div class="ui threaded comments" style="max-width: 100%;">
+                        <h3 class="ui dividing header">留言</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://unsplash.it/100/100?image=1003">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply" data-comment_id="1"
+                                       data-comment_nickname="Mark" onclick="reply(this)">回覆</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="comments">
-                            <div class="comment">
-                                <a class="avatar">
-                                    <img src="https://unsplash.it/100/100?image=1005">
-                                </a>
-                                <div class="content">
-                                    <a class="author">Jenny Hess</a>
-                                    <div class="metadata">
-                                        <span class="date">Just now</span>
-                                    </div>
-                                    <div class="text">
-                                        Elliot you are always so right :)
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply">回覆</a>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://unsplash.it/100/100?image=1006">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回覆</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="https://unsplash.it/100/100?image=1005">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">回覆</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="https://unsplash.it/100/100?image=1003">
-                        </a>
-                        <div class="content">
-                            <a class="author">Joe Henderson</a>
-                            <div class="metadata">
-                                <span class="date">5 days ago</span>
-                            </div>
-                            <div class="text">
-                                Dude, this is awesome. Thanks so much
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回覆</a>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://unsplash.it/100/100?image=1003">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回覆</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
             </div>
-            <div class="ui form">
+            <div id="comment-form" class="ui form">
+                <input type="hidden" name="blog.id" th:value="${blog.id}">
+                <input type="hidden" name="parentComment.id" value="-1">
                 <div class="field">
                     <textarea name="content" id="messageBoard" placeholder="有什麼要留言的嗎？"></textarea>
                 </div>
@@ -348,7 +354,8 @@ h5,h6{font-size:1em;}
                         </div>
                     </div>
                     <div class="field jet-margin-bottom-small jet-mobile-wide">
-                        <button class="ui jet-mobile-wide teal button"><i class="edit icon"></i>送出</button>
+                        <button id="commentPost-btn" class="ui jet-mobile-wide teal button"><i class="edit icon"></i>送出
+                        </button>
                     </div>
                 </div>
 
@@ -440,6 +447,71 @@ h5,h6{font-size:1em;}
             console.log('Scrolled to waypoint!', direction)
         }
     })
+
+    // 留言表單驗證
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入留言內容'
+                }]
+            }
+            ,
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入名稱'
+                }]
+            },
+            type: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '請填寫正確的電子信箱格式'
+                }]
+            }
+        }
+    })
+
+    $('#commentPost-btn').click(function () {
+        let bool = $('.ui.form').form('validate form');
+        if (bool) {
+            console.log('驗證 success')
+        } else {
+            console.log('驗證失敗')
+        }
+    })
+
+    function postData() {
+        $('#comment-container').load(/*[[@{/comments}]]*/"", {
+            'parentComment.id': $('[name="parentComment.id"]').val(),
+            'blog.id': $('[name="blog.id"]').val(),
+            'nickname': $('[name="nickname"]').val(),
+            'email': $('[name="email"]').val(),
+            'content': $('[name="content"]').val(),
+        }, function (responseText, statusText, xhr) {
+            $(window).scrollTo($('#comment-container'), 500);
+            clearContent();
+        });
+    }
+
+    function clearContent() {
+        let content = $('[name="content"]');
+        content.val('');
+        $('[name="parentComment.id"]').val(-1);
+        content.attr('placeholder', '有什麼要留言的嗎？');
+    }
+
+    function reply(obj) {
+        let commentId = $(obj).data('comment_id');
+        let commentNickname = $(obj).data('comment_nickname');
+        $('[name="content"]').attr('placeholder', '@' + commentNickname).focus();
+        $('[name="parentComment.id"]').val(commentId);
+        $(window).scrollTo($('#comment-form'), 500);
+    }
 </script>
 </body>
 </html>
