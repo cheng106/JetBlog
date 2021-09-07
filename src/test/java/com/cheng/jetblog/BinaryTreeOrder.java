@@ -148,6 +148,58 @@ public class BinaryTreeOrder {
         return result;
     }
 
+    static class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _left, Node _right, Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "val=" + val +
+                    ", left=" + left +
+                    ", right=" + right +
+                    ", next=" + next +
+                    '}';
+        }
+    }
+
+    public static Node connect(Node root) {
+        Node levelFirst = root;
+        while (levelFirst != null) {
+            Node curr = levelFirst;
+            while (curr != null) {
+                if (curr.left != null) {
+                    curr.left.next = curr.right;
+                }
+                if (curr.right != null && curr.next != null) {
+                    curr.right.next = curr.next.left;
+                }
+                curr = curr.next;
+            }
+            levelFirst = levelFirst.left;
+        }
+
+        return root;
+    }
+
+
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(4);
         root.left = new TreeNode(2);
@@ -175,5 +227,17 @@ public class BinaryTreeOrder {
         List<List<Integer>> levelOrderAns = BinaryTreeOrder.levelOrder(root2);
         System.out.println("levelOrderAns = " + levelOrderAns);
 
+        Node root3 = new Node(1);
+        root3.left = new Node(2);
+        root3.left.next = root3.right;
+        root3.right = new Node(3);
+        root3.left.left = new Node(4);
+        root3.left.left.next = root3.left.right;
+        root3.left.right = new Node(5);
+        root3.right.left = new Node(6);
+        root3.right.right = new Node(7);
+
+        Node populatingNode = BinaryTreeOrder.connect(root3);
+        System.out.println("populatingNode = " + populatingNode);
     }
 }
