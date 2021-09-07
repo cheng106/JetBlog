@@ -263,7 +263,12 @@ h5,h6{font-size:1em;}
                                 <img src="https://unsplash.it/100/100?image=1003" th:src="@{${comment.avatar}}">
                             </a>
                             <div class="content">
-                                <a class="author" th:text="${comment.nickname}">Matt</a>
+                                <a class="author">
+                                    <span th:text="${comment.nickname}">Matt</span>
+                                    <div class="ui mini basic teal left pointing label jet-padded-mini" th:if="${comment.adminComment}">
+                                        管理員
+                                    </div>
+                                </a>
                                 <div class="metadata">
                                     <span class="date"
                                           th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
@@ -278,6 +283,7 @@ h5,h6{font-size:1em;}
                                        onclick="reply(this)">回覆</a>
                                 </div>
                             </div>
+                            <!-- 回覆的層級留言 -->
                             <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
                                 <div class="comment" th:each="reply : ${comment.replyComments}">
                                     <a class="avatar">
@@ -285,8 +291,14 @@ h5,h6{font-size:1em;}
                                     </a>
                                     <div class="content">
                                         <a class="author">
-                                            <span th:text="${reply.nickname}">Matt</span>&nbsp;
-                                            <sapn th:text="|@ ${reply.parentComment.nickname}|" class="jet-teal">@ Mark</sapn>
+                                            <span th:text="${reply.nickname}">Matt</span>
+                                            <div class="ui mini basic teal left pointing label jet-padded-mini"
+                                                 th:if="${reply.adminComment}">管理員
+                                            </div>
+                                            &nbsp;
+                                            <sapn th:text="|@ ${reply.parentComment.nickname}|" class="jet-teal">@
+                                                Mark
+                                            </sapn>
                                         </a>
                                         <div class="metadata">
                                     <span class="date"
@@ -374,13 +386,13 @@ h5,h6{font-size:1em;}
                     <div class="field jet-mobile-wide jet-margin-bottom-small">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="nickname" placeholder="姓名">
+                            <input type="text" name="nickname" placeholder="姓名" th:value="${session.user} != null ? ${session.user.nickname}">
                         </div>
                     </div>
                     <div class="field jet-mobile-wide jet-margin-bottom-small">
                         <div class="ui left icon input">
                             <i class="mail icon"></i>
-                            <input type="text" name="email" placeholder="信箱">
+                            <input type="text" name="email" placeholder="信箱" th:value="${session.user} != null ? ${session.user.email}">
                         </div>
                     </div>
                     <div class="field jet-margin-bottom-small jet-mobile-wide">

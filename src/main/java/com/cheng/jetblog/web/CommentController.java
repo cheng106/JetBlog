@@ -1,6 +1,7 @@
 package com.cheng.jetblog.web;
 
 import com.cheng.jetblog.po.Comment;
+import com.cheng.jetblog.po.User;
 import com.cheng.jetblog.service.BlogService;
 import com.cheng.jetblog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author cheng
@@ -34,10 +37,16 @@ public class CommentController {
     }
 
     @PostMapping("/comments")
-    public String post(Comment comment) {
+    public String post(Comment comment, HttpSession session) {
         Long blogId = comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
-        comment.setAvatar(avatar);
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            comment.setAvatar(user.getAvatar());
+            comment.setAdminComment(true);
+        } else {
+            comment.setAvatar(avatar);
+        }
         commentService.saveComment(comment);
         return "redirect:/comments/" + blogId;
     }
