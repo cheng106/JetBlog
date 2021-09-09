@@ -81,28 +81,4 @@ public class Blog {
                 .collect(Collectors.joining(","));
     }
 
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", firstPicture='" + firstPicture + '\'' +
-                ", flag='" + flag + '\'' +
-                ", views=" + views +
-                ", isAppreciation=" + isAppreciation +
-                ", isShareStatements=" + isShareStatements +
-                ", isCommentBoard=" + isCommentBoard +
-                ", isPublished=" + isPublished +
-                ", isRecommend=" + isRecommend +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", category=" + category +
-                ", tags=" + tags +
-                ", user=" + user +
-                ", comments=" + comments +
-                ", tagIds='" + tagIds + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }
