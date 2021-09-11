@@ -47,23 +47,29 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/images/QRcode.jpg" th:src="@{/images/QRcode.jpg}" class="ui rounded image" alt="QR Code"
+                        <img src="../static/images/QRcode.jpg" th:src="@{/images/QRcode.jpg}" class="ui rounded image"
+                             alt="QR Code"
                              style="width: 100px">
                     </div>
                 </div>
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header jet-text-thin jet-text-spaced">最新文章</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">User Store</a>
-                    <a href="#" class="item">Hibernate</a>
-                    <a href="#" class="item">Spring Boot</a>
+                <div id="newBlog-container">
+                    <div class="ui inverted link list" th:fragment="newBlogList">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank"
+                           class="item" th:each="blog : ${newBlogs}" th:text="${blog.title}">User Store</a>
+                        <!--/*-->
+                        <a href="#" class="item">Hibernate</a>
+                        <a href="#" class="item">Spring Boot</a>
+                        <!--*/-->
+                    </div>
                 </div>
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header jet-text-thin jet-text-spaced">聯絡我</h4>
                 <div class="ui inverted link list">
-                    <a href="#" class="item">Email: Cheng106.andy@gmail.com</a>
+                    <a href="#" class="item" th:text="|Email: #{index.email}|">Email: Cheng106.andy@gmail.com</a>
                     <a href="#" class="item">Hibernate</a>
                     <a href="#" class="item">Spring Boot</a>
                 </div>
@@ -86,6 +92,9 @@
     <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
     <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script>
+        $('#newBlog-container').load(/*[[@{/footer/newBlog}]]*/"/footer/newBlog")
+    </script>
 </th:block>
 </body>
 </html>
