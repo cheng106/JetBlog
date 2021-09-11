@@ -3,6 +3,8 @@ spring:
     mode: HTML
   profiles:
     active: dev
+  messages:
+    basename: i18n/messages
 logging:
   config: classpath:logback-spring.xml
 
