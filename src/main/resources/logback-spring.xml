@@ -16,6 +16,7 @@
 
     <!-- 定義日誌檔案的儲存位置 -->
     <property name="LOG_HOME" value="logs" />
+<!--    <property name="LOG_HOME" value="/usr/tomcat/jetLog" />-->
 
     <!-- 控制台輸出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
