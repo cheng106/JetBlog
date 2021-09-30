@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "t_blog")
 public class Blog {
 

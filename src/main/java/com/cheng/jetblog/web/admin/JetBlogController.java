@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,6 +84,9 @@ public class JetBlogController {
         blog.setCategory(categoryService.getCategory(blog.getCategory().getId()));
         blog.setTags(tagService.findAllByIds(blog.getTagIds()));
         System.out.println("blog = " + blog);
+        if (StringUtils.isEmpty(blog.getFlag())) {
+            blog.setFlag("原創");
+        }
         Blog ob = blogService.getBlog(blog.getId());
         blog.setCreateTime(ob.getCreateTime());
         blog.setViews(ob.getViews());
