@@ -167,7 +167,8 @@
                         </div>
                         <div class="right aligned column">
                             <a th:href="@{/(page=${page.number}+1)}"
-                               th:unless="${page.last}">下一頁</a>
+                               th:unless="${page.last}"
+                               class="ui mini teal basic button">下一頁</a>
                         </div>
                     </div>
                 </div>

@@ -53,28 +53,25 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
-        return blogRepository.findAll(new Specification<Blog>() {
-            @Override
-            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                List<Predicate> predicates = new ArrayList<>();
-                if (!StringUtils.isEmpty(blog.getTitle())) {
-                    predicates.add(cb.like(root.get("title"), "%" + blog.getTitle() + "%"));
-                }
-                if (!StringUtils.isEmpty(blog.getCategoryId())) {
-                    predicates.add(cb.equal(root.<Category>get("category").get("id"), blog.getCategoryId()));
-                }
-                if (blog.isRecommend()) {
-                    predicates.add(cb.equal(root.<Boolean>get("isRecommend"), blog.isRecommend()));
-                }
-                cq.where(predicates.toArray(new Predicate[predicates.size()]));
-                return null;
+        return blogRepository.findAll((Specification<Blog>) (root, cq, cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            if (!StringUtils.isEmpty(blog.getTitle())) {
+                predicates.add(cb.like(root.get("title"), "%" + blog.getTitle() + "%"));
             }
+            if (!StringUtils.isEmpty(blog.getCategoryId())) {
+                predicates.add(cb.equal(root.<Category>get("category").get("id"), blog.getCategoryId()));
+            }
+            if (blog.isRecommend()) {
+                predicates.add(cb.equal(root.<Boolean>get("isRecommend"), blog.isRecommend()));
+            }
+            cq.where(predicates.toArray(new Predicate[0]));
+            return null;
         }, pageable);
     }
 
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
-        return blogRepository.findAll(pageable);
+        return blogRepository.findBlogByPublished(pageable);
     }
 
     @Override
