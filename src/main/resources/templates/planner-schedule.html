@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>About me</title>
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav th:replace="_fragments :: menu(6)"></nav>
+
+<!-- 內容 -->
+<div class="jet-container jet-padded-tb-massive animated fadeIn">
+    <div class="ui container">
+        <div th:text="${msg}"></div>
+        <div class="two wide field">
+            <button class="ui teal submit button" onclick="addRow()">下一筆</button>
+        </div>
+        <h1>TEST</h1>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+</script>
+</body>
+</html>

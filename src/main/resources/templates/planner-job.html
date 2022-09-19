@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>About me</title>
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav th:replace="_fragments :: menu(6)"></nav>
+
+<!-- 內容 -->
+<div class="jet-container jet-padded-tb-massive animated fadeIn">
+    <div class="ui container">
+        <div class="two wide field">
+            <button class="ui teal submit button" onclick="addRow()">下一筆</button>
+        </div>
+        <form method="post" th:action="@{/formData}" id="data-form">
+            <div id="form_field" class="ui large form">
+                <div id="multiRow" class="ui large form">
+                    <div id="pList" class="fields">
+                        <div class="six wide field">
+                            <label for="search-select">專案選擇</label>
+                            <select id="search-select" name="nonProjectId[1]" class="ui fluid search dropdown">
+                                <option value="">Select project Code</option>
+                                <option th:each="entry: ${projectMap}" th:value="${entry.key}"
+                                        th:text="${entry.value}"></option>
+                            </select>
+                        </div>
+                        <div class="two wide field">
+                            <label>時間(小時)</label>
+                            <label>
+                                <input class="workTime" name="duration[1]" type="number" placeholder="時間">
+                            </label>
+                        </div>
+                        <div class="ten wide field">
+                            <label>工作描述</label>
+                            <label>
+                                <input name="description[1]" type="text" placeholder="描述">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--            <div id="submitBtn" class="ui primary submit button">submit</div>-->
+                <button class="ui teal submit button" onclick="save()">送出</button>
+                <div class="ui error message"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer"></footer>
+<!--/*/<th:block th:replace="_fragments :: script"></th:block>/*/-->
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.j-item').toggleClass('jet-mobile-hide');
+    })
+
+    window.onload = function () {
+        $('.ui.dropdown').dropdown();
+        // initValidator();
+    }
+
+
+    $(".workTime").on('blur', function () {
+        let val = $('input[name=integer]').val();
+        if (val < 0 || val > 12) {
+            alert("單項時數不超過0~12小時")
+        }
+    })
+
+    function save(e) {
+        e.preventDefault()
+        let object = {};
+        let formData = new FormData(document.getElementById('data-form'))
+
+        formData.forEach((value, key) => object[key] = value);
+        let json = JSON.stringify(object);
+        alert("json:" + json)
+        // TODO:整理資料後送到後端
+        let workResult = []
+        $('input[name=description\\[1\\]]').each(function () {
+            workResult.push($(this).val())
+        })
+        console.log('workResult:', workResult)
+
+        let workTimeResult = []
+        $('input[name=duration\\[1\\]]').each(function () {
+            workTimeResult.push($(this).val())
+        })
+        console.log('workTimeResult:', workTimeResult)
+
+        let projectCodeList = []
+        $('input[name=nonProjectId\\[1\\]]').each(function () {
+            projectCodeList.push($(this).val())
+        })
+        console.log('projectCodeList:', projectCodeList)
+    }
+
+    function addRow() {
+        let multiRow = document.getElementById('multiRow');
+        let pList = document.getElementById("pList");
+        let clonePList = pList.cloneNode(true);
+        console.log(clonePList)
+        multiRow.appendChild(clonePList);
+        $('.ui.dropdown').dropdown();
+        // initValidator()
+    }
+
+    function initValidator() {
+        $('.ui.dropdown').dropdown();
+        $('.ui.large.form').form({
+            on: 'blur',
+            fields: {
+                integer: {
+                    identifier: 'integer',
+                    rules: [
+                        {
+                            type: 'integer[1..10]',
+                            prompt: 'Please enter an integer value'
+                        }
+                    ]
+                },
+                workDesc: {
+                    identifier: 'workDesc',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter a work description'
+                        }
+                    ]
+                },
+                projectCode: {
+                    identifier: 'projectCode',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please select project code'
+                        }
+                    ]
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <title>XPlanner</title>
+</head>
+<body>
+
+<!-- 導航列 -->
+<nav th:replace="_fragments :: menu(6)"></nav>
+<!-- 內容 -->
+<br><br><br>
+<div class="jet-container-small jet-padded-tb-massive" style="max-width: 30em !important;">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">XPlanner後台登入</div>
+                </h2>
+                <form class="ui large form" method="post" th:action="@{/plan/login}">
+                    <div class="ui segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" placeholder="請輸入帳號">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="請輸入密碼">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button">Login</button>
+                    </div>
+                    <div class="ui mini error message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">
+                        帳號或密碼錯誤
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.ui.form').form({
+        fields: {
+            username: {
+                identifier: 'username',
+                rules: [{
+                    type: 'empty',
+                    prompt: '錯誤：請輸入帳號'
+                }]
+            },
+            password: {
+                identifier: 'password',
+                rules: [{
+                    type: 'empty',
+                    prompt: '錯誤：請輸入密碼'
+                }]
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
